@@ -19,6 +19,7 @@ public class Odontologo {
     @Column
     private String apellido;
 
+
  /*
     private Set<Turno> turnos=new HashSet<>();
 
@@ -35,6 +36,7 @@ public class Odontologo {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
+
     }
 
     public Odontologo(String matricula, String nombre, String apellido) {
@@ -42,8 +44,8 @@ public class Odontologo {
         this.nombre = nombre;
         this.apellido = apellido;
     }
-    public Odontologo(){
 
+    public Odontologo() {
     }
 
     public Long getId() {
@@ -75,6 +77,7 @@ public class Odontologo {
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+        this.apellido = apellido;    }
+
+
 }

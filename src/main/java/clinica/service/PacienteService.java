@@ -22,7 +22,7 @@ public class PacienteService {
         return pacienteRepository.save(paciente);
     }
 
-    public Optional<Paciente> buscrapciente(Long id){
+    public Optional<Paciente> buscarpciente(Long id){
         return pacienteRepository.findById(id);
     }
 

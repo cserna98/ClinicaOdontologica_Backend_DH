@@ -34,4 +34,8 @@ public class OdontologoService {
     public Optional<Odontologo> buscarOdontologo(Long id) {
         return odontologoRepository.findById(id);
     }
+
+    public void actualizarOdontologo(Odontologo odontologo){
+        odontologoRepository.save(odontologo);
+    }
 }

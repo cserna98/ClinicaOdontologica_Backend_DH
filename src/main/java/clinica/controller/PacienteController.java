@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import clinica.service.PacienteService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,7 +21,7 @@ public class PacienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id){
-        Optional<Paciente> pacienteBuscado = pacienteService.buscrapciente(id);
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarpciente(id);
         if (pacienteBuscado.isPresent()){
             return ResponseEntity.ok(pacienteBuscado.get());
         }else {
@@ -29,7 +30,36 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> registrarPaciente(@RequestBody Paciente paciente){
+    public ResponseEntity<Paciente> agregarPaciente(@RequestBody Paciente paciente){
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
+
+    @PutMapping
+    public ResponseEntity<String> modificarPaciente(@RequestBody Paciente paciente){
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarpciente(paciente.getId());
+        if (pacienteBuscado.isPresent()){
+            pacienteService.actualizarPaciente(paciente);
+            return ResponseEntity.ok("Se modifico el paciente con id : " + paciente.getId());
+        }else {
+            return ResponseEntity.badRequest().body("No existe el paciente con id:" + paciente.getId() + "en la base de datos.");
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Paciente>> listarPacientes(){
+        return ResponseEntity.ok(pacienteService.buscarPacientes());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id){
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarpciente(id);
+        if (pacienteBuscado.isPresent()){
+            pacienteService.eliminarPaciente(id);
+            return ResponseEntity.ok("Se elimino el paciente con id: "+ id );
+        }else {
+            return ResponseEntity.badRequest().body("no se encontro paciente con id: "+ id);
+        }
+    }
+
+
 }

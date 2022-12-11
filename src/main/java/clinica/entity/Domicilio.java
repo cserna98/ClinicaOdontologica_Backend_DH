@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "domicilios")
+@Table(name = "domicilio")
 public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,13 @@ public class Domicilio {
 
     public Domicilio(Long id, String calle, Integer number, String localidad, String provincia) {
         this.id = id;
+        this.calle = calle;
+        this.number = number;
+        this.localidad = localidad;
+        this.provincia = provincia;
+    }
+
+    public Domicilio(String calle, Integer number, String localidad, String provincia) {
         this.calle = calle;
         this.number = number;
         this.localidad = localidad;
