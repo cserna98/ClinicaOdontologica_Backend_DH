@@ -1,4 +1,4 @@
-package clinica.entity;
+package com.Integrador.Integrador_proyectoOdntologico.entity;
 
 import javax.persistence.*;
 

@@ -1,10 +1,10 @@
-package clinica.service;
+package com.Integrador.Integrador_proyectoOdntologico.service;
 
-import clinica.dto.TurnoDTO;
-import clinica.entity.Odontologo;
-import clinica.entity.Paciente;
-import clinica.entity.Turno;
-import clinica.repository.TurnoRepository;
+import com.Integrador.Integrador_proyectoOdntologico.dto.TurnoDTO;
+import com.Integrador.Integrador_proyectoOdntologico.entity.Odontologo;
+import com.Integrador.Integrador_proyectoOdntologico.entity.Paciente;
+import com.Integrador.Integrador_proyectoOdntologico.entity.Turno;
+import com.Integrador.Integrador_proyectoOdntologico.repository.TurnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package clinica;
+package com.Integrador.Integrador_proyectoOdntologico;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

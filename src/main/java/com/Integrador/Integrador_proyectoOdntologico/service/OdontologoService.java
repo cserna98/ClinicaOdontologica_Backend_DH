@@ -1,9 +1,9 @@
-package clinica.service;
+package com.Integrador.Integrador_proyectoOdntologico.service;
 
-import clinica.entity.Odontologo;
+import com.Integrador.Integrador_proyectoOdntologico.entity.Odontologo;
+import com.Integrador.Integrador_proyectoOdntologico.repository.OdontologoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import clinica.repository.OdontologoRepository;
 
 import java.util.List;
 import java.util.Optional;

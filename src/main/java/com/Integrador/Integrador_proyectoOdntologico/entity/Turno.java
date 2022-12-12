@@ -1,6 +1,4 @@
-package clinica.entity;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.Integrador.Integrador_proyectoOdntologico.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

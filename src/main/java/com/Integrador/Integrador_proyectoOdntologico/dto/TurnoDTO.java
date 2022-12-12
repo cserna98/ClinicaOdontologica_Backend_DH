@@ -1,4 +1,4 @@
-package clinica.dto;
+package com.Integrador.Integrador_proyectoOdntologico.dto;
 
 
 import java.time.LocalDate;
