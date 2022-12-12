@@ -21,7 +21,7 @@ public class PacienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id){
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarpciente(id);
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarpaciente(id);
         if (pacienteBuscado.isPresent()){
             return ResponseEntity.ok(pacienteBuscado.get());
         }else {
@@ -36,7 +36,7 @@ public class PacienteController {
 
     @PutMapping
     public ResponseEntity<String> modificarPaciente(@RequestBody Paciente paciente){
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarpciente(paciente.getId());
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarpaciente(paciente.getId());
         if (pacienteBuscado.isPresent()){
             pacienteService.actualizarPaciente(paciente);
             return ResponseEntity.ok("Se modifico el paciente con id : " + paciente.getId());
@@ -52,7 +52,7 @@ public class PacienteController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarPaciente(@PathVariable Long id){
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarpciente(id);
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarpaciente(id);
         if (pacienteBuscado.isPresent()){
             pacienteService.eliminarPaciente(id);
             return ResponseEntity.ok("Se elimino el paciente con id: "+ id );

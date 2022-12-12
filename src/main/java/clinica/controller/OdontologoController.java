@@ -1,6 +1,8 @@
 package clinica.controller;
 
 import clinica.entity.Odontologo;
+import clinica.entity.Paciente;
+import clinica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +43,16 @@ public class OdontologoController {
     public ResponseEntity<String> eliminarOdontologo(@PathVariable long id){
         odontologoService.eliminarOdontologo(id);
         return ResponseEntity.ok("Se elimino el odontologo con id: "+id);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Odontologo> verOdontologo(@PathVariable long id){
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(id);
+        if (odontologoBuscado.isPresent()){
+            return ResponseEntity.ok(odontologoBuscado.get());
+        }else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

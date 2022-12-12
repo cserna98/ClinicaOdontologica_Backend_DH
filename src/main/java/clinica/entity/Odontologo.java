@@ -19,6 +19,18 @@ public class Odontologo {
     @Column
     private String apellido;
 
+    @OneToMany(mappedBy = "odontologo",fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Turno> turnos=new HashSet<>();
+
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(Set<Turno> turnos) {
+        this.turnos = turnos;
+    }
+
 
  /*
     private Set<Turno> turnos=new HashSet<>();

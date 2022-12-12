@@ -1,7 +1,11 @@
 package clinica.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "pacientes")
@@ -23,8 +27,20 @@ public class Paciente {
     private LocalDate date;
     @OneToOne(cascade = CascadeType.ALL) // que es cascade
     @JoinColumn(name = "domicilio_id",referencedColumnName = "id")
-
     private Domicilio domicilio;
+
+    @OneToMany(mappedBy = "paciente",fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Turno> turnos=new HashSet<>();
+
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(Set<Turno> turnos) {
+        this.turnos = turnos;
+    }
+
 
     public Paciente(Long id, String lastName, String name, String email, String dni, LocalDate date, Domicilio domicilio) {
         this.id = id;
