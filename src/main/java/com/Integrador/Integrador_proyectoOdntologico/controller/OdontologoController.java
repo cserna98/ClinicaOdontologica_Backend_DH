@@ -1,6 +1,7 @@
 package com.Integrador.Integrador_proyectoOdntologico.controller;
 
 import com.Integrador.Integrador_proyectoOdntologico.entity.Odontologo;
+import com.Integrador.Integrador_proyectoOdntologico.excepciones.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/odontologos")
 public class OdontologoController {
     private OdontologoService odontologoService;
@@ -38,9 +40,14 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarOdontologo(@PathVariable long id){
-        odontologoService.eliminarOdontologo(id);
-        return ResponseEntity.ok("Se elimino el odontologo con id: "+id);
+    public ResponseEntity<String> eliminarOdontologo(@PathVariable long id) throws ResourceNotFoundException {
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(id);
+        if (odontologoBuscado.isPresent()){
+            return  ResponseEntity.ok("Se elimino el odontologo con id: "+id);
+        }else {
+            throw new ResourceNotFoundException("No se puede eliminar el turno" +" con id= "+id);
+        }
+
     }
 
     @GetMapping("/{id}")

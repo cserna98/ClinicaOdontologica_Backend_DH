@@ -1,6 +1,10 @@
 package com.Integrador.Integrador_proyectoOdntologico.controller;
 
 import com.Integrador.Integrador_proyectoOdntologico.dto.TurnoDTO;
+import com.Integrador.Integrador_proyectoOdntologico.entity.Odontologo;
+import com.Integrador.Integrador_proyectoOdntologico.entity.Paciente;
+import com.Integrador.Integrador_proyectoOdntologico.excepciones.BadRequestException;
+import com.Integrador.Integrador_proyectoOdntologico.excepciones.ResourceNotFoundException;
 import com.Integrador.Integrador_proyectoOdntologico.service.OdontologoService;
 import com.Integrador.Integrador_proyectoOdntologico.service.PacienteService;
 import com.Integrador.Integrador_proyectoOdntologico.service.TurnoService;
@@ -29,8 +33,18 @@ public class TurnoController {
 
 
     @PostMapping
-    public ResponseEntity<TurnoDTO> crearTurno(TurnoDTO turnodto){
-        return ResponseEntity.ok(turnoService.guardarTurno(turnodto));
+    public ResponseEntity<String> crearTurno(TurnoDTO turno) throws BadRequestException {
+        Optional<Odontologo> odontoBuscado=odontologoService.buscarOdontologo(turno.getOdontologoId());
+        Optional<Paciente> pacienteBuscado=pacienteService.buscarpaciente(turno.getPacienteId());
+        if (odontoBuscado.isPresent()&&pacienteBuscado.isPresent()){
+            turnoService.guardarTurno(turno);
+            return ResponseEntity.ok().body("Se registro el turno :" + turno );
+        }else if(odontoBuscado.isPresent()){
+            throw new BadRequestException("No se encontro el paciente con id:"+ turno.getPacienteId());
+        }else {
+            throw new BadRequestException("No se encontro el odontologo con id:"+ turno.getOdontologoId());
+        }
+
     }
 
     @GetMapping
@@ -60,13 +74,13 @@ public class TurnoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarturno(@PathVariable Long id){
+    public ResponseEntity<String> eliminarturno(@PathVariable Long id) throws ResourceNotFoundException {
         Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(id);
         if (turnoBuscado.isPresent()){
             turnoService.eliminarTurno(id);
             return ResponseEntity.ok("se elimino el turno con id: " + id);
         }else {
-            return ResponseEntity.badRequest().body("no existe el turno con id: "+ id);
+            throw new ResourceNotFoundException("No se puede eliminar el turno" +" con id= "+id);
         }
     }
 

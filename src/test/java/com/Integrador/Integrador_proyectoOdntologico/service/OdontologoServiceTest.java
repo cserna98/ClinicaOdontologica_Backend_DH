@@ -1,8 +1,8 @@
 package com.Integrador.Integrador_proyectoOdntologico.service;
 
-import com.Integrador.Integrador_proyectoOdntologico.entity.Domicilio;
+
 import com.Integrador.Integrador_proyectoOdntologico.entity.Odontologo;
-import com.Integrador.Integrador_proyectoOdntologico.entity.Paciente;
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
