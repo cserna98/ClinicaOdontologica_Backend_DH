@@ -9,6 +9,7 @@ public class TurnoDTO {
     private Long pacienteId;
     private Long odontologoId;
 
+
     public Long getId() {
         return id;
     }

@@ -9,10 +9,13 @@ import com.Integrador.Integrador_proyectoOdntologico.service.PacienteService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/pacientes")
+@CrossOrigin(origins = "*")
+@RequestMapping("api/pacientes")
 public class PacienteController {
+
     private PacienteService pacienteService;
     @Autowired
     public PacienteController(PacienteService pacienteService) {

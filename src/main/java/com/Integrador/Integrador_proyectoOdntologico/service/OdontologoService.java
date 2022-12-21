@@ -2,6 +2,7 @@ package com.Integrador.Integrador_proyectoOdntologico.service;
 
 import com.Integrador.Integrador_proyectoOdntologico.entity.Odontologo;
 import com.Integrador.Integrador_proyectoOdntologico.repository.OdontologoRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,15 @@ import java.util.Optional;
 
 @Service
 public class OdontologoService {
+    private static final Logger LOGGER= Logger.getLogger(OdontologoService.class);
     private OdontologoRepository odontologoRepository;
     @Autowired
     public OdontologoService(OdontologoRepository odontologoRepository) {
         this.odontologoRepository = odontologoRepository;
     }
     public Odontologo guardarOdontologo(Odontologo odontologo){
+        LOGGER.info("Se inició el proceso de guardado del odontologo con apellido: "+
+                odontologo.getApellido());
         return odontologoRepository.save(odontologo);
     }
 

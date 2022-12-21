@@ -16,7 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/turnos")
+@CrossOrigin(origins = "*")
+@RequestMapping("api/turnos")
 public class TurnoController {
     private TurnoService turnoService;
     private PacienteService pacienteService;
@@ -33,12 +34,12 @@ public class TurnoController {
 
 
     @PostMapping
-    public ResponseEntity<String> crearTurno(TurnoDTO turno) throws BadRequestException {
+    public ResponseEntity<String> crearTurno(@RequestBody TurnoDTO turno) throws BadRequestException {
         Optional<Odontologo> odontoBuscado=odontologoService.buscarOdontologo(turno.getOdontologoId());
         Optional<Paciente> pacienteBuscado=pacienteService.buscarpaciente(turno.getPacienteId());
         if (odontoBuscado.isPresent()&&pacienteBuscado.isPresent()){
             turnoService.guardarTurno(turno);
-            return ResponseEntity.ok().body("Se registro el turno :" + turno );
+            return ResponseEntity.ok().body("Se registro el turno :" + turno.getId() );
         }else if(odontoBuscado.isPresent()){
             throw new BadRequestException("No se encontro el paciente con id:"+ turno.getPacienteId());
         }else {

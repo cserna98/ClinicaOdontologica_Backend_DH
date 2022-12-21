@@ -32,16 +32,6 @@ public class Odontologo {
     }
 
 
- /*
-    private Set<Turno> turnos=new HashSet<>();
-
-    public Set<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(Set<Turno> turnos) {
-        this.turnos = turnos;
-    }*/
 
     public Odontologo(Long id, String matricula, String nombre, String apellido) {
         this.id = id;

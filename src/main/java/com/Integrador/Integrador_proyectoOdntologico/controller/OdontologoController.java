@@ -6,14 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.Integrador.Integrador_proyectoOdntologico.service.OdontologoService;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/odontologos")
+@CrossOrigin(origins = "*")
+@RequestMapping("api/odontologos")
 public class OdontologoController {
+
     private OdontologoService odontologoService;
     @Autowired
     public OdontologoController(OdontologoService odontologoService) {

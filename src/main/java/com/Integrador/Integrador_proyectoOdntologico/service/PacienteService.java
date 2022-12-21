@@ -8,9 +8,12 @@ import com.Integrador.Integrador_proyectoOdntologico.repository.PacienteReposito
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class PacienteService {
+
+    private static final Logger LOGGER= Logger.getLogger("log");
     private PacienteRepository pacienteRepository;
 
     @Autowired
@@ -19,6 +22,7 @@ public class PacienteService {
     }
 
     public Paciente guardarPaciente(Paciente paciente){
+        LOGGER.info("Se inició el proceso de guardado del paciente :"+paciente.getId() );
         return pacienteRepository.save(paciente);
     }
 
