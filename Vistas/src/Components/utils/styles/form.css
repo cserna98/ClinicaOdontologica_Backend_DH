@@ -1,0 +1,38 @@
+    .card-grid {
+    position: relative;
+    z-index: 1;
+    /* other styles */
+}
+  
+  /* style the second element */
+    .form-container{        
+    height: 100%;   
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    /* other styles */
+}
+
+    .render{
+    height: 600px;   
+    position: relative;
+}
+    .agregar{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    input {
+        background-color: #f9f9f9;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      button {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+      }
