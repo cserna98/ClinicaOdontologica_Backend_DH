@@ -26,6 +26,8 @@ Spring Data JPA
 H2 database
 HTML, JavaScript y/o React para la vista
 
+Además, se utilizó Postman para las pruebas de la API y se incluyeron test unitarios para garantizar la calidad de los desarrollos. También se realizó el manejo de excepciones logueando cualquier excepción que se pudiera generar.
+
 # Para ejecutar la aplicación:
 
 Descargar o clonar el repositorio.
